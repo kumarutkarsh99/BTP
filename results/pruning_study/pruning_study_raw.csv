@@ -1,0 +1,2 @@
+Model,Task,Seed,Pruning_Amount,Use_Distillation,Use_Progressive,FP32_Acc,Pruned_Acc,Accuracy_Drop,Accuracy_Retention,FP32_Size_MB,Pruned_Size_MB,Sparsity_Actual,Size_Reduction,Params_Total,Params_Trainable
+distilbert-base-uncased,sst2,42,0.0,True,False,0.9059633027522935,0.9059633027522935,0.0,100.0,255.41309356689453,255.41309356689453,0.0,0.0,66955010,66955010

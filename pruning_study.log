@@ -1,0 +1,427 @@
+2026-03-17 11:06:25,457 - INFO - 
+================================================================================
+2026-03-17 11:06:25,457 - INFO -                               PRUNING AMOUNT STUDY                              
+2026-03-17 11:06:25,457 - INFO - ================================================================================
+2026-03-17 11:06:25,457 - INFO - Pruning amounts: ['0%', '5%', '10%', '15%', '20%', '25%', '30%', '40%', '50%']
+2026-03-17 11:06:25,457 - INFO - Models: ['distilbert-base-uncased', 'bert-base-uncased']
+2026-03-17 11:06:25,457 - INFO - Tasks: ['sst2', 'qnli']
+2026-03-17 11:06:25,457 - INFO - Seeds: [42, 123, 999]
+2026-03-17 11:06:25,457 - INFO - ================================================================================
+
+2026-03-17 11:06:25,457 - INFO - 
+================================================================================
+2026-03-17 11:06:25,457 - INFO - Pruning=0% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:06:25,457 - INFO - ================================================================================
+2026-03-17 11:06:25,458 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:06:25,821 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:06:26,102 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:06:26,388 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:06:26,660 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:06:26,933 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:06:27,208 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:06:27,249 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:06:27,252 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:06:27,252 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:06:27,522 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:08:25,509 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:08:26,541 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:08:27,077 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:08:27,216 - INFO - 
+Progress: 1/108 experiments
+
+2026-03-17 11:08:27,216 - INFO - 
+================================================================================
+2026-03-17 11:08:27,216 - INFO - Pruning=5% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:08:27,216 - INFO - ================================================================================
+2026-03-17 11:08:27,217 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:08:27,671 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:08:27,964 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:08:28,254 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:08:28,542 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:08:28,823 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:08:29,126 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:08:29,167 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:08:29,170 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:08:29,170 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:08:29,440 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:10:43,406 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:10:44,435 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:10:44,995 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:10:44,997 - INFO - 
+============================================================
+2026-03-17 11:10:44,997 - INFO - PRUNING PIPELINE
+2026-03-17 11:10:44,997 - INFO - ============================================================
+2026-03-17 11:10:45,007 - INFO - Applying 5.0% structured pruning (l2)
+2026-03-17 11:10:45,032 - INFO - ✓ Pruned 38 layers
+2026-03-17 11:10:45,033 - INFO - Recovery with knowledge distillation
+2026-03-17 11:10:45,033 - INFO - Training with knowledge distillation
+2026-03-17 11:14:31,535 - INFO - Distillation Epoch 1/3 - Loss: 0.1610, Val Acc: 0.9037
+2026-03-17 11:17:30,895 - INFO - Distillation Epoch 2/3 - Loss: 0.0627, Val Acc: 0.9083
+2026-03-17 11:20:29,799 - INFO - Distillation Epoch 3/3 - Loss: 0.0418, Val Acc: 0.9071
+2026-03-17 11:20:29,799 - INFO - ✅ Knowledge distillation complete
+2026-03-17 11:20:29,800 - INFO - ✓ Pruning masks removed (zeros permanent)
+2026-03-17 11:20:30,393 - INFO - 
+✅ Pruning complete:
+2026-03-17 11:20:30,393 - INFO -    Sparsity: 3.2%
+2026-03-17 11:20:30,393 - INFO -    Accuracy: 0.9071
+2026-03-17 11:20:30,954 - ERROR - ❌ Experiment failed: Parameter 'weight' of module DistilBertForSequenceClassification(
+  (distilbert): DistilBertModel(
+    (embeddings): Embeddings(
+      (word_embeddings): Embedding(30522, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (transformer): Transformer(
+      (layer): ModuleList(
+        (0-5): 6 x TransformerBlock(
+          (attention): DistilBertSelfAttention(
+            (q_lin): Linear(in_features=768, out_features=768, bias=True)
+            (k_lin): Linear(in_features=768, out_features=768, bias=True)
+            (v_lin): Linear(in_features=768, out_features=768, bias=True)
+            (out_lin): Linear(in_features=768, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (sa_layer_norm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+          (ffn): FFN(
+            (dropout): Dropout(p=0.1, inplace=False)
+            (lin1): Linear(in_features=768, out_features=3072, bias=True)
+            (lin2): Linear(in_features=3072, out_features=768, bias=True)
+            (activation): GELUActivation()
+          )
+          (output_layer_norm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+    )
+  )
+  (pre_classifier): Linear(in_features=768, out_features=768, bias=True)
+  (classifier): Linear(in_features=768, out_features=2, bias=True)
+  (dropout): Dropout(p=0.2, inplace=False)
+) has to be pruned before pruning can be removed
+2026-03-17 11:20:31,084 - INFO - 
+Progress: 2/108 experiments
+
+2026-03-17 11:20:31,085 - INFO - 
+================================================================================
+2026-03-17 11:20:31,085 - INFO - Pruning=10% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:20:31,085 - INFO - ================================================================================
+2026-03-17 11:20:31,085 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:20:31,509 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:20:31,774 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:20:32,035 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:20:32,302 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:20:32,593 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:20:32,850 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:20:32,890 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:20:32,893 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:20:32,893 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:20:33,180 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:22:30,223 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:22:31,246 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:22:31,780 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:22:31,782 - INFO - 
+============================================================
+2026-03-17 11:22:31,782 - INFO - PRUNING PIPELINE
+2026-03-17 11:22:31,782 - INFO - ============================================================
+2026-03-17 11:22:31,791 - INFO - Applying 10.0% structured pruning (l2)
+2026-03-17 11:22:31,797 - INFO - ✓ Pruned 38 layers
+2026-03-17 11:22:31,797 - INFO - Recovery with knowledge distillation
+2026-03-17 11:22:31,797 - INFO - Training with knowledge distillation
+2026-03-17 11:26:16,374 - INFO - Distillation Epoch 1/3 - Loss: 0.3017, Val Acc: 0.8922
+2026-03-17 11:29:15,139 - INFO - Distillation Epoch 2/3 - Loss: 0.0718, Val Acc: 0.9048
+2026-03-17 11:32:35,990 - INFO - Distillation Epoch 3/3 - Loss: 0.0448, Val Acc: 0.9025
+2026-03-17 11:32:35,991 - INFO - ✅ Knowledge distillation complete
+2026-03-17 11:32:35,992 - INFO - ✓ Pruning masks removed (zeros permanent)
+2026-03-17 11:32:36,572 - INFO - 
+✅ Pruning complete:
+2026-03-17 11:32:36,572 - INFO -    Sparsity: 6.4%
+2026-03-17 11:32:36,572 - INFO -    Accuracy: 0.9025
+2026-03-17 11:32:37,140 - ERROR - ❌ Experiment failed: Parameter 'weight' of module DistilBertForSequenceClassification(
+  (distilbert): DistilBertModel(
+    (embeddings): Embeddings(
+      (word_embeddings): Embedding(30522, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (transformer): Transformer(
+      (layer): ModuleList(
+        (0-5): 6 x TransformerBlock(
+          (attention): DistilBertSelfAttention(
+            (q_lin): Linear(in_features=768, out_features=768, bias=True)
+            (k_lin): Linear(in_features=768, out_features=768, bias=True)
+            (v_lin): Linear(in_features=768, out_features=768, bias=True)
+            (out_lin): Linear(in_features=768, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (sa_layer_norm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+          (ffn): FFN(
+            (dropout): Dropout(p=0.1, inplace=False)
+            (lin1): Linear(in_features=768, out_features=3072, bias=True)
+            (lin2): Linear(in_features=3072, out_features=768, bias=True)
+            (activation): GELUActivation()
+          )
+          (output_layer_norm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+    )
+  )
+  (pre_classifier): Linear(in_features=768, out_features=768, bias=True)
+  (classifier): Linear(in_features=768, out_features=2, bias=True)
+  (dropout): Dropout(p=0.2, inplace=False)
+) has to be pruned before pruning can be removed
+2026-03-17 11:32:37,278 - INFO - 
+Progress: 3/108 experiments
+
+2026-03-17 11:32:37,279 - INFO - 
+================================================================================
+2026-03-17 11:32:37,279 - INFO - Pruning=15% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:32:37,279 - INFO - ================================================================================
+2026-03-17 11:32:37,279 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:32:37,639 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:32:37,900 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:32:38,181 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:32:38,443 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:32:38,721 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:32:38,995 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:32:39,043 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:32:39,047 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:32:39,047 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:32:39,305 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:34:43,347 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:34:44,428 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:34:44,964 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:34:44,966 - INFO - 
+============================================================
+2026-03-17 11:34:44,966 - INFO - PRUNING PIPELINE
+2026-03-17 11:34:44,966 - INFO - ============================================================
+2026-03-17 11:34:44,975 - INFO - Applying 15.0% structured pruning (l2)
+2026-03-17 11:34:44,981 - INFO - ✓ Pruned 38 layers
+2026-03-17 11:34:44,981 - INFO - Recovery with knowledge distillation
+2026-03-17 11:34:44,982 - INFO - Training with knowledge distillation
+2026-03-17 11:37:04,395 - INFO - 
+================================================================================
+2026-03-17 11:37:04,395 - INFO -                               PRUNING AMOUNT STUDY                              
+2026-03-17 11:37:04,395 - INFO - ================================================================================
+2026-03-17 11:37:04,395 - INFO - Pruning amounts: ['0%', '5%', '10%', '15%', '20%', '25%', '30%', '40%', '50%']
+2026-03-17 11:37:04,395 - INFO - Models: ['distilbert-base-uncased', 'bert-base-uncased']
+2026-03-17 11:37:04,395 - INFO - Tasks: ['sst2', 'qnli']
+2026-03-17 11:37:04,395 - INFO - Seeds: [42, 123, 999]
+2026-03-17 11:37:04,396 - INFO - ================================================================================
+
+2026-03-17 11:37:04,396 - INFO - 
+================================================================================
+2026-03-17 11:37:04,396 - INFO - Pruning=0% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:37:04,396 - INFO - ================================================================================
+2026-03-17 11:37:04,397 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:37:04,757 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:37:05,057 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:37:05,333 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:37:05,618 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:37:05,886 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:37:06,167 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:37:06,209 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:37:06,212 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:37:06,212 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:37:06,500 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:39:01,417 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:39:02,469 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:39:03,020 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:39:03,149 - INFO - 
+Progress: 1/108 experiments
+
+2026-03-17 11:39:03,149 - INFO - 
+================================================================================
+2026-03-17 11:39:03,149 - INFO - Pruning=5% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:39:03,149 - INFO - ================================================================================
+2026-03-17 11:39:03,150 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:39:03,613 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:39:03,926 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:39:04,209 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:39:04,478 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:39:04,756 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:39:05,025 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:39:05,065 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:39:05,069 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:39:05,069 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:39:05,333 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:41:01,700 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:41:02,693 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:41:03,236 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:41:03,238 - INFO - 
+============================================================
+2026-03-17 11:41:03,238 - INFO - PRUNING PIPELINE
+2026-03-17 11:41:03,238 - INFO - ============================================================
+2026-03-17 11:41:03,248 - INFO - Applying 5.0% structured pruning (l2)
+2026-03-17 11:41:03,273 - INFO - ✓ Pruned 38 layers
+2026-03-17 11:41:03,273 - INFO - Recovery with knowledge distillation
+2026-03-17 11:41:03,273 - INFO - Training with knowledge distillation
+2026-03-17 11:41:03,361 - ERROR - ❌ Experiment failed: CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 44.39 GiB of which 66.19 MiB is free. Process 1314808 has 16.47 GiB memory in use. Process 1322923 has 560.00 MiB memory in use. Process 1323098 has 24.54 GiB memory in use. Including non-PyTorch memory, this process has 2.72 GiB memory in use. Of the allocated memory 2.11 GiB is allocated by PyTorch, and 106.49 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-03-17 11:41:03,463 - INFO - 
+Progress: 2/108 experiments
+
+2026-03-17 11:41:03,463 - INFO - 
+================================================================================
+2026-03-17 11:41:03,463 - INFO - Pruning=10% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:41:03,463 - INFO - ================================================================================
+2026-03-17 11:41:03,464 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:41:03,879 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:41:04,179 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:41:04,493 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:41:04,758 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:41:05,035 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:41:05,315 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:41:05,358 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:41:05,361 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:41:05,361 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:41:05,650 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:43:02,351 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:43:03,347 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:43:03,887 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:43:03,888 - INFO - 
+============================================================
+2026-03-17 11:43:03,889 - INFO - PRUNING PIPELINE
+2026-03-17 11:43:03,889 - INFO - ============================================================
+2026-03-17 11:43:03,898 - INFO - Applying 10.0% structured pruning (l2)
+2026-03-17 11:43:03,904 - INFO - ✓ Pruned 38 layers
+2026-03-17 11:43:03,904 - INFO - Recovery with knowledge distillation
+2026-03-17 11:43:03,904 - INFO - Training with knowledge distillation
+2026-03-17 11:43:03,969 - ERROR - ❌ Experiment failed: CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 44.39 GiB of which 66.19 MiB is free. Process 1314808 has 16.47 GiB memory in use. Process 1322923 has 560.00 MiB memory in use. Process 1323098 has 24.54 GiB memory in use. Including non-PyTorch memory, this process has 2.72 GiB memory in use. Of the allocated memory 2.11 GiB is allocated by PyTorch, and 107.99 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-03-17 11:43:04,081 - INFO - 
+Progress: 3/108 experiments
+
+2026-03-17 11:43:04,081 - INFO - 
+================================================================================
+2026-03-17 11:43:04,081 - INFO - Pruning=15% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:43:04,081 - INFO - ================================================================================
+2026-03-17 11:43:04,081 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:43:04,470 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:43:04,773 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:43:05,037 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:43:05,340 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:43:05,621 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:43:05,913 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:43:05,953 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:43:05,956 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:43:05,956 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:43:06,267 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:45:03,080 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:45:04,112 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:45:04,658 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:45:04,660 - INFO - 
+============================================================
+2026-03-17 11:45:04,660 - INFO - PRUNING PIPELINE
+2026-03-17 11:45:04,660 - INFO - ============================================================
+2026-03-17 11:45:04,670 - INFO - Applying 15.0% structured pruning (l2)
+2026-03-17 11:45:04,675 - INFO - ✓ Pruned 38 layers
+2026-03-17 11:45:04,675 - INFO - Recovery with knowledge distillation
+2026-03-17 11:45:04,675 - INFO - Training with knowledge distillation
+2026-03-17 11:45:04,739 - ERROR - ❌ Experiment failed: CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 44.39 GiB of which 66.19 MiB is free. Process 1314808 has 16.47 GiB memory in use. Process 1322923 has 560.00 MiB memory in use. Process 1323098 has 24.54 GiB memory in use. Including non-PyTorch memory, this process has 2.72 GiB memory in use. Of the allocated memory 2.11 GiB is allocated by PyTorch, and 107.99 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-03-17 11:45:04,898 - INFO - 
+Progress: 4/108 experiments
+
+2026-03-17 11:45:04,898 - INFO - 
+================================================================================
+2026-03-17 11:45:04,898 - INFO - Pruning=20% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:45:04,898 - INFO - ================================================================================
+2026-03-17 11:45:04,898 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:45:05,291 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:45:05,581 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:45:05,851 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:45:06,130 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:45:06,407 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:45:06,669 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:45:06,709 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:45:06,712 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:45:06,713 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:45:06,991 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:47:03,656 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:47:04,651 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:47:05,206 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:47:05,208 - INFO - 
+============================================================
+2026-03-17 11:47:05,208 - INFO - PRUNING PIPELINE
+2026-03-17 11:47:05,208 - INFO - ============================================================
+2026-03-17 11:47:05,218 - INFO - Applying 20.0% structured pruning (l2)
+2026-03-17 11:47:05,223 - INFO - ✓ Pruned 38 layers
+2026-03-17 11:47:05,223 - INFO - Recovery with knowledge distillation
+2026-03-17 11:47:05,223 - INFO - Training with knowledge distillation
+2026-03-17 11:47:05,285 - ERROR - ❌ Experiment failed: CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 44.39 GiB of which 66.19 MiB is free. Process 1314808 has 16.47 GiB memory in use. Process 1322923 has 560.00 MiB memory in use. Process 1323098 has 24.54 GiB memory in use. Including non-PyTorch memory, this process has 2.72 GiB memory in use. Of the allocated memory 2.11 GiB is allocated by PyTorch, and 107.99 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-03-17 11:47:05,465 - INFO - 
+Progress: 5/108 experiments
+
+2026-03-17 11:47:05,465 - INFO - 
+================================================================================
+2026-03-17 11:47:05,466 - INFO - Pruning=25% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:47:05,466 - INFO - ================================================================================
+2026-03-17 11:47:05,466 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:47:05,851 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:47:06,127 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:47:06,399 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:47:06,675 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:47:06,935 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:47:07,203 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:47:07,243 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:47:07,246 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:47:07,246 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:47:07,508 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:49:04,301 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:49:05,293 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:49:05,837 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:49:05,839 - INFO - 
+============================================================
+2026-03-17 11:49:05,839 - INFO - PRUNING PIPELINE
+2026-03-17 11:49:05,839 - INFO - ============================================================
+2026-03-17 11:49:05,849 - INFO - Applying 25.0% structured pruning (l2)
+2026-03-17 11:49:05,854 - INFO - ✓ Pruned 38 layers
+2026-03-17 11:49:05,855 - INFO - Recovery with knowledge distillation
+2026-03-17 11:49:05,855 - INFO - Training with knowledge distillation
+2026-03-17 11:49:05,917 - ERROR - ❌ Experiment failed: CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 44.39 GiB of which 66.19 MiB is free. Process 1314808 has 16.47 GiB memory in use. Process 1322923 has 560.00 MiB memory in use. Process 1323098 has 24.54 GiB memory in use. Including non-PyTorch memory, this process has 2.72 GiB memory in use. Of the allocated memory 2.11 GiB is allocated by PyTorch, and 107.99 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-03-17 11:49:06,020 - INFO - 
+Progress: 6/108 experiments
+
+2026-03-17 11:49:06,020 - INFO - 
+================================================================================
+2026-03-17 11:49:06,020 - INFO - Pruning=30% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:49:06,020 - INFO - ================================================================================
+2026-03-17 11:49:06,021 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:49:06,415 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:49:06,692 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:49:06,946 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:49:07,236 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:49:07,526 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:49:07,783 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:49:07,822 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:49:07,826 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:49:07,826 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:49:08,118 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:51:05,145 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 11:51:06,144 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 11:51:06,678 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 11:51:06,680 - INFO - 
+============================================================
+2026-03-17 11:51:06,680 - INFO - PRUNING PIPELINE
+2026-03-17 11:51:06,680 - INFO - ============================================================
+2026-03-17 11:51:06,690 - INFO - Applying 30.0% structured pruning (l2)
+2026-03-17 11:51:06,695 - INFO - ✓ Pruned 38 layers
+2026-03-17 11:51:06,695 - INFO - Recovery with knowledge distillation
+2026-03-17 11:51:06,695 - INFO - Training with knowledge distillation
+2026-03-17 11:51:06,757 - ERROR - ❌ Experiment failed: CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 44.39 GiB of which 66.19 MiB is free. Process 1314808 has 16.47 GiB memory in use. Process 1322923 has 560.00 MiB memory in use. Process 1323098 has 24.54 GiB memory in use. Including non-PyTorch memory, this process has 2.72 GiB memory in use. Of the allocated memory 2.11 GiB is allocated by PyTorch, and 107.99 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-03-17 11:51:06,892 - INFO - 
+Progress: 7/108 experiments
+
+2026-03-17 11:51:06,892 - INFO - 
+================================================================================
+2026-03-17 11:51:06,892 - INFO - Pruning=40% | distilbert-base-uncased | sst2 | Seed=42
+2026-03-17 11:51:06,892 - INFO - ================================================================================
+2026-03-17 11:51:06,893 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 11:51:07,337 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 11:51:07,615 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 11:51:07,902 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:51:08,176 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 11:51:08,444 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 11:51:08,729 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 11:51:08,769 - INFO - Loading cached dataset from data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 11:51:08,772 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 11:51:08,773 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 11:51:09,060 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"

@@ -1,0 +1,534 @@
+2026-03-17 10:23:16,458 - INFO - ================================================================================
+2026-03-17 10:23:16,458 - INFO -                   ULTIMATE POST-TRAINING QUANTIZATION PIPELINE                  
+2026-03-17 10:23:16,458 - INFO - ================================================================================
+2026-03-17 10:23:16,458 - INFO - Device: cuda
+2026-03-17 10:23:16,458 - INFO - Models: 1
+2026-03-17 10:23:16,458 - INFO - Tasks: 1
+2026-03-17 10:23:16,458 - INFO - Seeds: 1
+2026-03-17 10:23:16,458 - INFO - Search Method: simulated_annealing
+2026-03-17 10:23:16,458 - INFO - Use QAT: False
+2026-03-17 10:23:16,458 - INFO - Use Progressive Pruning: False
+2026-03-17 10:23:16,458 - INFO - ================================================================================
+
+2026-03-17 10:23:16,458 - INFO - Starting 1 experiments
+
+2026-03-17 10:23:16,458 - INFO - 
+================================================================================
+2026-03-17 10:23:16,458 - INFO -                       prajjwal1/bert-tiny | sst2 | Seed 42                      
+2026-03-17 10:23:16,458 - INFO - ================================================================================
+
+2026-03-17 10:23:16,459 - INFO - 📦 Preparing data...
+2026-03-17 10:23:16,459 - INFO - Preparing data for SST2 with prajjwal1/bert-tiny
+2026-03-17 10:23:17,085 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:23:17,125 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/prajjwal1/bert-tiny/6f75de8b60a9f8a2fdf7b69cbd86d9e64bcb3837/config.json "HTTP/1.1 200 OK"
+2026-03-17 10:23:17,405 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:23:17,444 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/prajjwal1/bert-tiny/6f75de8b60a9f8a2fdf7b69cbd86d9e64bcb3837/config.json "HTTP/1.1 200 OK"
+2026-03-17 10:23:17,721 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:23:18,002 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:23:18,281 - INFO - HTTP Request: GET https://huggingface.co/api/models/prajjwal1/bert-tiny/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 10:23:18,552 - INFO - HTTP Request: GET https://huggingface.co/api/models/prajjwal1/bert-tiny/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 10:23:18,832 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:23:19,102 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer.model "HTTP/1.1 404 Not Found"
+2026-03-17 10:23:19,364 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:23:19,627 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:23:19,889 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:23:20,151 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-03-17 10:23:20,153 - ERROR - ❌ ERROR in prajjwal1/bert-tiny|sst2|42: Couldn't instantiate the backend tokenizer from one of: 
+(1) a `tokenizers` library serialization file, 
+(2) a slow tokenizer instance to convert or 
+(3) an equivalent slow tokenizer class to instantiate and convert. 
+You need to have sentencepiece or tiktoken installed to convert a slow tokenizer to a fast one.
+2026-03-17 10:23:20,154 - ERROR - Traceback (most recent call last):
+  File "/scratch/dt/adaptivfloat/pipeline/main.py", line 112, in run_single_experiment
+    train_loader, val_loader, num_labels, task_info = prepare_data(
+                                                      ~~~~~~~~~~~~^
+        model_name, task,
+        ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        pin_memory=PIN_MEMORY
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scratch/dt/adaptivfloat/pipeline/data/data_loader.py", line 112, in prepare_data
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py", line 773, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_base.py", line 1721, in from_pretrained
+    return cls._from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~^
+        resolved_vocab_files,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_base.py", line 1910, in _from_pretrained
+    tokenizer = cls(*init_inputs, **init_kwargs)
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_tokenizers.py", line 341, in __init__
+    raise ValueError(
+    ...<5 lines>...
+    )
+ValueError: Couldn't instantiate the backend tokenizer from one of: 
+(1) a `tokenizers` library serialization file, 
+(2) a slow tokenizer instance to convert or 
+(3) an equivalent slow tokenizer class to instantiate and convert. 
+You need to have sentencepiece or tiktoken installed to convert a slow tokenizer to a fast one.
+
+2026-03-17 10:23:20,154 - INFO - Progress: 0/1 completed, 1 failed
+
+2026-03-17 10:23:20,477 - INFO - 
+📊 Generating visualizations...
+2026-03-17 10:23:20,477 - WARNING - Could not generate plots: [Errno 2] No such file or directory: 'results/raw_seed_results.csv'
+2026-03-17 10:23:20,477 - INFO - 
+================================================================================
+2026-03-17 10:23:20,477 - INFO -                                PIPELINE COMPLETE                                
+2026-03-17 10:23:20,477 - INFO - ================================================================================
+2026-03-17 10:23:20,477 - INFO - Total experiments: 1
+2026-03-17 10:23:20,477 - INFO - Completed: 0
+2026-03-17 10:23:20,477 - INFO - Failed: 1
+2026-03-17 10:23:20,477 - INFO - 
+Results saved to:
+2026-03-17 10:23:20,477 - INFO -   - results/raw_seed_results.csv
+2026-03-17 10:23:20,478 - INFO -   - results/final_research_results.csv
+2026-03-17 10:23:20,478 - INFO -   - plots/ (visualizations)
+2026-03-17 10:23:20,478 - INFO - ================================================================================
+
+2026-03-17 10:26:19,317 - INFO - ================================================================================
+2026-03-17 10:26:19,317 - INFO -                   ULTIMATE POST-TRAINING QUANTIZATION PIPELINE                  
+2026-03-17 10:26:19,317 - INFO - ================================================================================
+2026-03-17 10:26:19,317 - INFO - Device: cuda
+2026-03-17 10:26:19,317 - INFO - Models: 1
+2026-03-17 10:26:19,317 - INFO - Tasks: 1
+2026-03-17 10:26:19,317 - INFO - Seeds: 1
+2026-03-17 10:26:19,317 - INFO - Search Method: simulated_annealing
+2026-03-17 10:26:19,317 - INFO - Use QAT: False
+2026-03-17 10:26:19,317 - INFO - Use Progressive Pruning: False
+2026-03-17 10:26:19,317 - INFO - ================================================================================
+
+2026-03-17 10:26:19,317 - INFO - Starting 1 experiments
+
+2026-03-17 10:26:19,317 - INFO - 
+================================================================================
+2026-03-17 10:26:19,317 - INFO -                       prajjwal1/bert-tiny | sst2 | Seed 42                      
+2026-03-17 10:26:19,317 - INFO - ================================================================================
+
+2026-03-17 10:26:19,319 - INFO - 📦 Preparing data...
+2026-03-17 10:26:19,319 - INFO - Preparing data for SST2 with prajjwal1/bert-tiny
+2026-03-17 10:26:19,715 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:26:19,747 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/prajjwal1/bert-tiny/6f75de8b60a9f8a2fdf7b69cbd86d9e64bcb3837/config.json "HTTP/1.1 200 OK"
+2026-03-17 10:26:20,005 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:26:20,038 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/prajjwal1/bert-tiny/6f75de8b60a9f8a2fdf7b69cbd86d9e64bcb3837/config.json "HTTP/1.1 200 OK"
+2026-03-17 10:26:20,296 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:26:20,588 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:26:20,866 - INFO - HTTP Request: GET https://huggingface.co/api/models/prajjwal1/bert-tiny/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 10:26:21,148 - INFO - HTTP Request: GET https://huggingface.co/api/models/prajjwal1/bert-tiny/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 10:26:21,432 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:26:21,703 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer.model "HTTP/1.1 404 Not Found"
+2026-03-17 10:26:21,980 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:26:22,258 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:26:22,539 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:26:22,808 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-03-17 10:26:22,809 - ERROR - ❌ ERROR in prajjwal1/bert-tiny|sst2|42: Couldn't instantiate the backend tokenizer from one of: 
+(1) a `tokenizers` library serialization file, 
+(2) a slow tokenizer instance to convert or 
+(3) an equivalent slow tokenizer class to instantiate and convert. 
+You need to have sentencepiece or tiktoken installed to convert a slow tokenizer to a fast one.
+2026-03-17 10:26:22,811 - ERROR - Traceback (most recent call last):
+  File "/scratch/dt/adaptivfloat/pipeline/main.py", line 112, in run_single_experiment
+    train_loader, val_loader, num_labels, task_info = prepare_data(
+                                                      ~~~~~~~~~~~~^
+        model_name, task,
+        ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        pin_memory=PIN_MEMORY
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scratch/dt/adaptivfloat/pipeline/data/data_loader.py", line 112, in prepare_data
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py", line 773, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_base.py", line 1721, in from_pretrained
+    return cls._from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~^
+        resolved_vocab_files,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_base.py", line 1910, in _from_pretrained
+    tokenizer = cls(*init_inputs, **init_kwargs)
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_tokenizers.py", line 341, in __init__
+    raise ValueError(
+    ...<5 lines>...
+    )
+ValueError: Couldn't instantiate the backend tokenizer from one of: 
+(1) a `tokenizers` library serialization file, 
+(2) a slow tokenizer instance to convert or 
+(3) an equivalent slow tokenizer class to instantiate and convert. 
+You need to have sentencepiece or tiktoken installed to convert a slow tokenizer to a fast one.
+
+2026-03-17 10:26:22,812 - INFO - Progress: 0/1 completed, 1 failed
+
+2026-03-17 10:26:23,133 - INFO - 
+📊 Generating visualizations...
+2026-03-17 10:26:23,134 - WARNING - Could not generate plots: [Errno 2] No such file or directory: 'results/raw_seed_results.csv'
+2026-03-17 10:26:23,134 - INFO - 
+================================================================================
+2026-03-17 10:26:23,134 - INFO -                                PIPELINE COMPLETE                                
+2026-03-17 10:26:23,134 - INFO - ================================================================================
+2026-03-17 10:26:23,134 - INFO - Total experiments: 1
+2026-03-17 10:26:23,134 - INFO - Completed: 0
+2026-03-17 10:26:23,134 - INFO - Failed: 1
+2026-03-17 10:26:23,134 - INFO - 
+Results saved to:
+2026-03-17 10:26:23,134 - INFO -   - results/raw_seed_results.csv
+2026-03-17 10:26:23,134 - INFO -   - results/final_research_results.csv
+2026-03-17 10:26:23,134 - INFO -   - plots/ (visualizations)
+2026-03-17 10:26:23,134 - INFO - ================================================================================
+
+2026-03-17 10:46:02,541 - INFO - ================================================================================
+2026-03-17 10:46:02,541 - INFO -                   ULTIMATE POST-TRAINING QUANTIZATION PIPELINE                  
+2026-03-17 10:46:02,541 - INFO - ================================================================================
+2026-03-17 10:46:02,541 - INFO - Device: cuda
+2026-03-17 10:46:02,541 - INFO - Models: 1
+2026-03-17 10:46:02,541 - INFO - Tasks: 1
+2026-03-17 10:46:02,541 - INFO - Seeds: 1
+2026-03-17 10:46:02,541 - INFO - Search Method: simulated_annealing
+2026-03-17 10:46:02,542 - INFO - Use QAT: False
+2026-03-17 10:46:02,542 - INFO - Use Progressive Pruning: False
+2026-03-17 10:46:02,542 - INFO - ================================================================================
+
+2026-03-17 10:46:02,542 - INFO - Starting 1 experiments
+
+2026-03-17 10:46:02,542 - INFO - 
+================================================================================
+2026-03-17 10:46:02,542 - INFO -                       prajjwal1/bert-tiny | sst2 | Seed 42                      
+2026-03-17 10:46:02,542 - INFO - ================================================================================
+
+2026-03-17 10:46:02,543 - INFO - 📦 Preparing data...
+2026-03-17 10:46:02,543 - INFO - Preparing data for SST2 with prajjwal1/bert-tiny
+2026-03-17 10:46:07,992 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:46:08,030 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/prajjwal1/bert-tiny/6f75de8b60a9f8a2fdf7b69cbd86d9e64bcb3837/config.json "HTTP/1.1 200 OK"
+2026-03-17 10:46:08,287 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:46:08,324 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/prajjwal1/bert-tiny/6f75de8b60a9f8a2fdf7b69cbd86d9e64bcb3837/config.json "HTTP/1.1 200 OK"
+2026-03-17 10:46:08,608 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:08,868 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:09,137 - INFO - HTTP Request: GET https://huggingface.co/api/models/prajjwal1/bert-tiny/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:09,416 - INFO - HTTP Request: GET https://huggingface.co/api/models/prajjwal1/bert-tiny/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 10:46:09,677 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:09,968 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer.model "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:10,244 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:10,497 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:10,762 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:11,026 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:11,027 - ERROR - ❌ ERROR in prajjwal1/bert-tiny|sst2|42: Couldn't instantiate the backend tokenizer from one of: 
+(1) a `tokenizers` library serialization file, 
+(2) a slow tokenizer instance to convert or 
+(3) an equivalent slow tokenizer class to instantiate and convert. 
+You need to have sentencepiece or tiktoken installed to convert a slow tokenizer to a fast one.
+2026-03-17 10:46:11,030 - ERROR - Traceback (most recent call last):
+  File "/scratch/dt/adaptivfloat/pipeline/main.py", line 112, in run_single_experiment
+    train_loader, val_loader, num_labels, task_info = prepare_data(
+                                                      ~~~~~~~~~~~~^
+        model_name, task,
+        ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        pin_memory=PIN_MEMORY
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scratch/dt/adaptivfloat/pipeline/data/data_loader.py", line 112, in prepare_data
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py", line 773, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_base.py", line 1721, in from_pretrained
+    return cls._from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~^
+        resolved_vocab_files,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_base.py", line 1910, in _from_pretrained
+    tokenizer = cls(*init_inputs, **init_kwargs)
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_tokenizers.py", line 341, in __init__
+    raise ValueError(
+    ...<5 lines>...
+    )
+ValueError: Couldn't instantiate the backend tokenizer from one of: 
+(1) a `tokenizers` library serialization file, 
+(2) a slow tokenizer instance to convert or 
+(3) an equivalent slow tokenizer class to instantiate and convert. 
+You need to have sentencepiece or tiktoken installed to convert a slow tokenizer to a fast one.
+
+2026-03-17 10:46:11,030 - INFO - Progress: 0/1 completed, 1 failed
+
+2026-03-17 10:46:11,351 - INFO - 
+📊 Generating visualizations...
+2026-03-17 10:46:11,351 - WARNING - Could not generate plots: [Errno 2] No such file or directory: 'results/raw_seed_results.csv'
+2026-03-17 10:46:11,351 - INFO - 
+================================================================================
+2026-03-17 10:46:11,351 - INFO -                                PIPELINE COMPLETE                                
+2026-03-17 10:46:11,351 - INFO - ================================================================================
+2026-03-17 10:46:11,352 - INFO - Total experiments: 1
+2026-03-17 10:46:11,352 - INFO - Completed: 0
+2026-03-17 10:46:11,352 - INFO - Failed: 1
+2026-03-17 10:46:11,352 - INFO - 
+Results saved to:
+2026-03-17 10:46:11,352 - INFO -   - results/raw_seed_results.csv
+2026-03-17 10:46:11,352 - INFO -   - results/final_research_results.csv
+2026-03-17 10:46:11,352 - INFO -   - plots/ (visualizations)
+2026-03-17 10:46:11,352 - INFO - ================================================================================
+
+2026-03-17 10:46:40,055 - INFO - ================================================================================
+2026-03-17 10:46:40,055 - INFO -                   ULTIMATE POST-TRAINING QUANTIZATION PIPELINE                  
+2026-03-17 10:46:40,055 - INFO - ================================================================================
+2026-03-17 10:46:40,055 - INFO - Device: cuda
+2026-03-17 10:46:40,055 - INFO - Models: 1
+2026-03-17 10:46:40,055 - INFO - Tasks: 1
+2026-03-17 10:46:40,055 - INFO - Seeds: 1
+2026-03-17 10:46:40,055 - INFO - Search Method: simulated_annealing
+2026-03-17 10:46:40,055 - INFO - Use QAT: False
+2026-03-17 10:46:40,055 - INFO - Use Progressive Pruning: False
+2026-03-17 10:46:40,055 - INFO - ================================================================================
+
+2026-03-17 10:46:40,055 - INFO - Starting 1 experiments
+
+2026-03-17 10:46:40,055 - INFO - 
+================================================================================
+2026-03-17 10:46:40,055 - INFO -                       prajjwal1/bert-tiny | sst2 | Seed 42                      
+2026-03-17 10:46:40,055 - INFO - ================================================================================
+
+2026-03-17 10:46:40,057 - INFO - 📦 Preparing data...
+2026-03-17 10:46:40,057 - INFO - Preparing data for SST2 with prajjwal1/bert-tiny
+2026-03-17 10:46:40,568 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:46:40,639 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/prajjwal1/bert-tiny/6f75de8b60a9f8a2fdf7b69cbd86d9e64bcb3837/config.json "HTTP/1.1 200 OK"
+2026-03-17 10:46:41,149 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:46:41,224 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/prajjwal1/bert-tiny/6f75de8b60a9f8a2fdf7b69cbd86d9e64bcb3837/config.json "HTTP/1.1 200 OK"
+2026-03-17 10:46:41,539 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:41,831 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:42,139 - INFO - HTTP Request: GET https://huggingface.co/api/models/prajjwal1/bert-tiny/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:42,670 - INFO - HTTP Request: GET https://huggingface.co/api/models/prajjwal1/bert-tiny/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 10:46:42,986 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:43,312 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer.model "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:43,614 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:43,953 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:44,250 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:44,555 - INFO - HTTP Request: HEAD https://huggingface.co/prajjwal1/bert-tiny/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-03-17 10:46:44,557 - ERROR - ❌ ERROR in prajjwal1/bert-tiny|sst2|42: Couldn't instantiate the backend tokenizer from one of: 
+(1) a `tokenizers` library serialization file, 
+(2) a slow tokenizer instance to convert or 
+(3) an equivalent slow tokenizer class to instantiate and convert. 
+You need to have sentencepiece or tiktoken installed to convert a slow tokenizer to a fast one.
+2026-03-17 10:46:44,559 - ERROR - Traceback (most recent call last):
+  File "/scratch/dt/adaptivfloat/pipeline/main.py", line 112, in run_single_experiment
+    train_loader, val_loader, num_labels, task_info = prepare_data(
+                                                      ~~~~~~~~~~~~^
+        model_name, task,
+        ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        pin_memory=PIN_MEMORY
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scratch/dt/adaptivfloat/pipeline/data/data_loader.py", line 112, in prepare_data
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py", line 773, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_base.py", line 1721, in from_pretrained
+    return cls._from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~^
+        resolved_vocab_files,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_base.py", line 1910, in _from_pretrained
+    tokenizer = cls(*init_inputs, **init_kwargs)
+  File "/scratch/dt/adaptivfloat/venv/lib/python3.13/site-packages/transformers/tokenization_utils_tokenizers.py", line 341, in __init__
+    raise ValueError(
+    ...<5 lines>...
+    )
+ValueError: Couldn't instantiate the backend tokenizer from one of: 
+(1) a `tokenizers` library serialization file, 
+(2) a slow tokenizer instance to convert or 
+(3) an equivalent slow tokenizer class to instantiate and convert. 
+You need to have sentencepiece or tiktoken installed to convert a slow tokenizer to a fast one.
+
+2026-03-17 10:46:44,559 - INFO - Progress: 0/1 completed, 1 failed
+
+2026-03-17 10:46:44,959 - INFO - 
+📊 Generating visualizations...
+2026-03-17 10:46:44,960 - WARNING - Could not generate plots: [Errno 2] No such file or directory: 'results/raw_seed_results.csv'
+2026-03-17 10:46:44,960 - INFO - 
+================================================================================
+2026-03-17 10:46:44,960 - INFO -                                PIPELINE COMPLETE                                
+2026-03-17 10:46:44,960 - INFO - ================================================================================
+2026-03-17 10:46:44,960 - INFO - Total experiments: 1
+2026-03-17 10:46:44,960 - INFO - Completed: 0
+2026-03-17 10:46:44,960 - INFO - Failed: 1
+2026-03-17 10:46:44,960 - INFO - 
+Results saved to:
+2026-03-17 10:46:44,960 - INFO -   - results/raw_seed_results.csv
+2026-03-17 10:46:44,960 - INFO -   - results/final_research_results.csv
+2026-03-17 10:46:44,960 - INFO -   - plots/ (visualizations)
+2026-03-17 10:46:44,960 - INFO - ================================================================================
+
+2026-03-17 10:49:06,550 - INFO - ================================================================================
+2026-03-17 10:49:06,550 - INFO -                   ULTIMATE POST-TRAINING QUANTIZATION PIPELINE                  
+2026-03-17 10:49:06,550 - INFO - ================================================================================
+2026-03-17 10:49:06,550 - INFO - Device: cuda
+2026-03-17 10:49:06,550 - INFO - Models: 1
+2026-03-17 10:49:06,550 - INFO - Tasks: 1
+2026-03-17 10:49:06,550 - INFO - Seeds: 1
+2026-03-17 10:49:06,550 - INFO - Search Method: simulated_annealing
+2026-03-17 10:49:06,550 - INFO - Use QAT: False
+2026-03-17 10:49:06,550 - INFO - Use Progressive Pruning: False
+2026-03-17 10:49:06,550 - INFO - ================================================================================
+
+2026-03-17 10:49:06,550 - INFO - Starting 1 experiments
+
+2026-03-17 10:49:06,550 - INFO - 
+================================================================================
+2026-03-17 10:49:06,550 - INFO -                     distilbert-base-uncased | sst2 | Seed 42                    
+2026-03-17 10:49:06,550 - INFO - ================================================================================
+
+2026-03-17 10:49:06,551 - INFO - 📦 Preparing data...
+2026-03-17 10:49:06,551 - INFO - Preparing data for SST2 with distilbert-base-uncased
+2026-03-17 10:49:06,992 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 10:49:07,273 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-17 10:49:07,564 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:07,825 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-17 10:49:08,088 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:08,351 - INFO - HTTP Request: GET https://huggingface.co/api/models/distilbert/distilbert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 10:49:08,394 - INFO - Downloading and preprocessing SST2 dataset...
+2026-03-17 10:49:08,673 - INFO - HTTP Request: HEAD https://huggingface.co/datasets/glue/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:08,931 - INFO - HTTP Request: HEAD https://huggingface.co/datasets/nyu-mll/glue/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:08,967 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/nyu-mll/glue/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/README.md "HTTP/1.1 200 OK"
+2026-03-17 10:49:09,259 - INFO - HTTP Request: HEAD https://huggingface.co/datasets/glue/resolve/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/glue.py "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:09,514 - INFO - HTTP Request: HEAD https://huggingface.co/datasets/nyu-mll/glue/resolve/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/glue.py "HTTP/1.1 404 Not Found"
+2026-03-17 10:49:10,570 - INFO - HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/glue/glue.py "HTTP/1.1 200 OK"
+2026-03-17 10:49:10,854 - INFO - HTTP Request: GET https://huggingface.co/api/datasets/glue/revision/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:11,116 - INFO - HTTP Request: GET https://huggingface.co/api/datasets/nyu-mll/glue/revision/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c "HTTP/1.1 200 OK"
+2026-03-17 10:49:11,398 - INFO - HTTP Request: HEAD https://huggingface.co/datasets/glue/resolve/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/.huggingface.yaml "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:11,659 - INFO - HTTP Request: HEAD https://huggingface.co/datasets/nyu-mll/glue/resolve/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/.huggingface.yaml "HTTP/1.1 404 Not Found"
+2026-03-17 10:49:12,134 - INFO - HTTP Request: GET https://datasets-server.huggingface.co/info?dataset=glue "HTTP/1.1 404 Not Found"
+2026-03-17 10:49:12,415 - INFO - HTTP Request: GET https://huggingface.co/api/datasets/glue/tree/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/ax?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:12,690 - INFO - HTTP Request: GET https://huggingface.co/api/datasets/nyu-mll/glue/tree/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/ax?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 10:49:12,954 - INFO - HTTP Request: GET https://huggingface.co/api/datasets/glue/tree/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:13,242 - INFO - HTTP Request: GET https://huggingface.co/api/datasets/nyu-mll/glue/tree/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-03-17 10:49:13,508 - INFO - HTTP Request: HEAD https://huggingface.co/datasets/glue/resolve/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/dataset_infos.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:13,804 - INFO - HTTP Request: HEAD https://huggingface.co/datasets/nyu-mll/glue/resolve/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/dataset_infos.json "HTTP/1.1 404 Not Found"
+2026-03-17 10:49:14,086 - INFO - HTTP Request: GET https://huggingface.co/api/datasets/glue/tree/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/sst2?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-03-17 10:49:14,366 - INFO - HTTP Request: GET https://huggingface.co/api/datasets/nyu-mll/glue/tree/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/sst2?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-17 10:49:17,235 - INFO - Dataset cached to data/cache/distilbert_base_uncased_sst2_20f6dbb5.pkl
+2026-03-17 10:49:17,236 - INFO - ✅ Dataset ready - Train: 67,349, Val: 872, Adaptive epochs: 3
+2026-03-17 10:49:17,240 - WARNING - Could not auto-determine batch size: 'NoneType' object has no attribute 'parameters'. Using default: 16
+2026-03-17 10:49:17,240 - INFO - 
+🎯 Training FP32 baseline...
+2026-03-17 10:49:17,240 - INFO - Training FP32 baseline: distilbert-base-uncased
+2026-03-17 10:49:17,506 - INFO - HTTP Request: HEAD https://huggingface.co/distilbert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-03-17 10:51:11,328 - INFO - Epoch 1/1 - Loss: 0.2409, Val Acc: 0.9060
+2026-03-17 10:51:12,106 - INFO - Saved checkpoint: checkpoints/fp32_distilbert-base-uncased_best.pt (accuracy=0.9060)
+2026-03-17 10:51:12,663 - INFO - ✅ FP32 training complete - Final accuracy: 0.9060
+2026-03-17 10:51:12,664 - INFO - ✅ FP32: Acc=0.9060, Size=255.41MB, Params=66,955,010
+2026-03-17 10:51:12,664 - INFO - 
+📊 Evaluating baselines...
+2026-03-17 10:51:12,664 - INFO - 
+============================================================
+2026-03-17 10:51:12,665 - INFO - BASELINE EVALUATIONS
+2026-03-17 10:51:12,665 - INFO - ============================================================
+2026-03-17 10:51:13,241 - INFO -   FP32: 0.9060
+2026-03-17 10:51:13,859 - INFO -   Uniform INT8: 0.9071
+2026-03-17 10:51:14,480 - INFO -   Uniform INT6: 0.9048
+2026-03-17 10:51:15,084 - INFO -   Uniform INT4: 0.9037
+2026-03-17 10:51:15,691 - INFO -   Mixed INT16×8: 0.9071
+2026-03-17 10:51:16,292 - INFO -   Conservative Hybrid (25% INT4): 0.9106
+2026-03-17 10:51:16,901 - INFO -   Conservative Hybrid (50% INT4): 0.9048
+2026-03-17 10:51:17,506 - INFO -   Dynamic INT8: 0.9071
+2026-03-17 10:51:18,084 - INFO -   Per-Tensor INT8: 0.9071
+2026-03-17 10:51:18,610 - INFO -   Per-Tensor INT4: 0.5092
+2026-03-17 10:51:18,610 - INFO - ============================================================
+
+2026-03-17 10:51:18,610 - INFO - 
+✂️  Pruning with distillation recovery...
+2026-03-17 10:51:18,610 - INFO - 
+============================================================
+2026-03-17 10:51:18,610 - INFO - PRUNING PIPELINE
+2026-03-17 10:51:18,610 - INFO - ============================================================
+2026-03-17 10:51:18,619 - INFO - Applying 15.0% structured pruning (l2)
+2026-03-17 10:51:18,648 - INFO - ✓ Pruned 38 layers
+2026-03-17 10:51:18,648 - INFO - Recovery with knowledge distillation
+2026-03-17 10:51:18,648 - INFO - Training with knowledge distillation
+2026-03-17 10:55:03,262 - INFO - Distillation Epoch 1/1 - Loss: 0.3239, Val Acc: 0.8716
+2026-03-17 10:55:03,262 - INFO - ✅ Knowledge distillation complete
+2026-03-17 10:55:03,263 - INFO - ✓ Pruning masks removed (zeros permanent)
+2026-03-17 10:55:03,843 - INFO - 
+✅ Pruning complete:
+2026-03-17 10:55:03,843 - INFO -    Sparsity: 9.6%
+2026-03-17 10:55:03,843 - INFO -    Accuracy: 0.8716
+2026-03-17 10:55:04,397 - INFO - ✅ Pruned: Acc=0.8716, Sparsity=9.6%
+2026-03-17 10:55:04,397 - INFO - 
+🔍 Hybrid search (simulated_annealing)...
+2026-03-17 10:55:04,397 - INFO - Simulated Annealing search (20 iterations)
+2026-03-17 10:55:04,982 - INFO - Baseline: INT8=0.8716, Limit=0.8566
+2026-03-17 10:55:05,582 - INFO -   Iter 1: New best - INT4=1/40, Score=1.0075
+2026-03-17 10:55:06,183 - INFO -   Iter 2: New best - INT4=2/40, Score=1.0150
+2026-03-17 10:55:06,780 - INFO -   Iter 3: New best - INT4=3/40, Score=1.0225
+2026-03-17 10:55:07,372 - INFO -   Iter 4: New best - INT4=4/40, Score=1.0274
+2026-03-17 10:55:07,962 - INFO -   Iter 5: New best - INT4=5/40, Score=1.0322
+2026-03-17 10:55:09,152 - INFO -   Iter 7: New best - INT4=5/40, Score=1.0401
+2026-03-17 10:55:09,750 - INFO -   Iter 8: New best - INT4=6/40, Score=1.0463
+2026-03-17 10:55:10,940 - INFO -   Iter 10: New best - INT4=6/40, Score=1.0476
+2026-03-17 10:55:11,528 - INFO -   Iter 11: New best - INT4=7/40, Score=1.0551
+2026-03-17 10:55:12,108 - INFO -   Iter 12: New best - INT4=8/40, Score=1.0587
+2026-03-17 10:55:12,708 - INFO -   Iter 13: New best - INT4=9/40, Score=1.0675
+2026-03-17 10:55:13,297 - INFO -   Iter 14: New best - INT4=10/40, Score=1.0711
+2026-03-17 10:55:13,917 - INFO -   Iter 15: New best - INT4=11/40, Score=1.0812
+2026-03-17 10:55:16,886 - INFO -   Iteration 20/20, Temp=0.358
+2026-03-17 10:55:17,481 - INFO -   Cache: 0/20 hits (0.0%)
+2026-03-17 10:55:17,481 - INFO - ✅ SA: 11/40 INT4 (27.5%), Acc=0.8704
+2026-03-17 10:55:17,481 - INFO - ✅ Hybrid: Acc=0.8704, INT4=11/40 (27.5%), Size≈55.07MB
+2026-03-17 10:55:17,481 - INFO - 
+📈 Compression: 4.64x, Size reduction: 78.4%, Acc drop: 3.56%
+2026-03-17 10:55:17,485 - INFO - 
+✅ Experiment complete in 6.2 minutes
+2026-03-17 10:55:17,485 - INFO - ================================================================================
+
+2026-03-17 10:55:17,623 - INFO - Progress: 1/1 completed, 0 failed
+
+2026-03-17 10:55:17,623 - INFO - 
+================================================================================
+2026-03-17 10:55:17,623 - INFO -                               STATISTICAL ANALYSIS                              
+2026-03-17 10:55:17,623 - INFO - ================================================================================
+
+2026-03-17 10:55:17,629 - INFO - ✅ Summary statistics saved to final_research_results.csv
+2026-03-17 10:55:17,823 - INFO - 
+📊 Generating visualizations...
+2026-03-17 10:55:18,337 - INFO - ✅ Plots saved to {PLOTS_DIR}/
+2026-03-17 10:55:18,337 - INFO - 
+================================================================================
+2026-03-17 10:55:18,337 - INFO -                                PIPELINE COMPLETE                                
+2026-03-17 10:55:18,337 - INFO - ================================================================================
+2026-03-17 10:55:18,337 - INFO - Total experiments: 1
+2026-03-17 10:55:18,337 - INFO - Completed: 1
+2026-03-17 10:55:18,337 - INFO - Failed: 0
+2026-03-17 10:55:18,337 - INFO - 
+Results saved to:
+2026-03-17 10:55:18,337 - INFO -   - results/raw_seed_results.csv
+2026-03-17 10:55:18,337 - INFO -   - results/final_research_results.csv
+2026-03-17 10:55:18,337 - INFO -   - plots/ (visualizations)
+2026-03-17 10:55:18,337 - INFO - ================================================================================
+
