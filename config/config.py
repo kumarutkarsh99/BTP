@@ -89,7 +89,7 @@ SEEDS = [42, 123, 456, 789, 2024]
 # ============================================================================
 
 # Batch size (will be auto-adjusted based on GPU memory)
-BATCH_SIZE = 16
+BATCH_SIZE = 8
 MAX_BATCH_SIZE = 64  # Upper limit for auto-adjustment
 MIN_BATCH_SIZE = 4   # Lower limit
 
@@ -115,13 +115,13 @@ GRADIENT_CLIP_NORM = 1.0
 # ============================================================================
 
 # Pruning
-PRUNING_AMOUNT = 0.15  # 15% structured pruning
+PRUNING_AMOUNT = 0.10  # 10% structured pruning
 PRUNING_AMOUNTS_ABLATION = [0.10, 0.15, 0.20, 0.30]
 USE_PROGRESSIVE_PRUNING = False  # Gradual pruning
 PROGRESSIVE_PRUNING_STEPS = 3
 
 # Quantization
-SENSITIVITY_THRESHOLD = 0.01  # 1.5% accuracy drop tolerance
+SENSITIVITY_THRESHOLD = 0.01  # 1% accuracy drop tolerance
 
 QUANTIZATION_BITS = {
     'ultra_low': 4,
@@ -179,6 +179,12 @@ PIN_MEMORY = True  # Faster GPU transfer
 
 USE_GRADIENT_CHECKPOINTING = True  # Trade compute for memory
 CLEAR_CACHE_EVERY_N_STEPS = 100
+
+# Add these lines:
+import gc
+def cleanup_memory():
+    gc.collect()
+    torch.cuda.empty_cache()
 
 # ============================================================================
 # LOGGING AND CHECKPOINTING
@@ -308,7 +314,7 @@ GENERATE_LATEX_TABLES = True
 def get_quick_test_config():
     """Ultra-fast config for testing (5-10 min)."""
     return {
-        'MODELS': ["distilbert-base-uncased"],  # Changed from bert-tiny
+        'MODELS': ["bert-base-uncased"],  # Changed from bert-tiny
         'TASKS': ["sst2"],
         'SEEDS': [42, 123],
         'EPOCHS_FINETUNE': 1,
@@ -329,7 +335,7 @@ def get_development_config():
         'EPOCHS_FINETUNE': 2,
         'EPOCHS_RECOVERY': 2,
         'EPOCHS_QAT': 1,
-        'SA_MAX_ITERATIONS': 50,
+        'SA_MAX_ITERATIONS': 100,
         'RUN_ABLATIONS': True,
         'USE_QAT': True,
     }
@@ -354,13 +360,13 @@ def get_paper_config():
 # ============================================================================
 
 # Quick test (5-10 minutes):
-CONFIG_PRESET = get_quick_test_config()
+# CONFIG_PRESET = get_quick_test_config()
 
 # Development (1-2 hours):
 # CONFIG_PRESET = get_development_config()
 
 # Full paper (24-48 hours):
-# CONFIG_PRESET = get_paper_config()
+CONFIG_PRESET = get_paper_config()
 
 # Apply preset if defined
 if 'CONFIG_PRESET' in locals():

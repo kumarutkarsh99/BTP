@@ -6,10 +6,7 @@ __pycache__/
 
 checkpoints/
 compressed_models/
-data/
 results/
 plots/
-evaluation/
-export/
 
 .ipynb_checkpoints/

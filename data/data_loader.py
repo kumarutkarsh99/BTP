@@ -109,7 +109,7 @@ def prepare_data(model_name, task, batch_size=16, max_length=128,
     logger.info(f"Preparing data for {task.upper()} with {model_name}")
     
     # Load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False, trust_remote_code=True)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
     

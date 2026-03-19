@@ -1,31 +1,21 @@
-# Core ML Libraries
-torch>=2.0.0
-transformers>=4.30.0
-datasets>=2.14.0
+torch==2.2.2
+transformers==4.38.2
+datasets==2.18.0
 
-# Scientific Computing
-numpy>=1.24.0
-scipy>=1.11.0
-scikit-learn>=1.3.0
-pandas>=2.0.0
+numpy==1.26.4
+scipy==1.11.4
+scikit-learn==1.3.2
+pandas==2.1.4
 
-# Visualization
-matplotlib>=3.7.0
-seaborn>=0.12.0
+matplotlib==3.8.2
+seaborn==0.13.1
 
-# Utilities
-tqdm>=4.65.0
+tqdm==4.66.1
 
-# Tokenizers
-sentencepiece>=0.1.99
-protobuf>=3.20.0
-tokenizers>=0.13.0
+sentencepiece==0.1.99
+protobuf==3.20.3
+tokenizers==0.15.2
 
-# ONNX Export & Runtime
-onnx>=1.14.0
-onnxruntime>=1.15.0
-onnxruntime-gpu>=1.15.0  # For GPU inference (optional)
-
-# Optional: For advanced features
-# accelerate>=0.20.0  # Faster training
-# tensorboard>=2.13.0  # Training visualization
+onnx==1.15.0
+onnxruntime==1.17.1
+onnxruntime-gpu==1.17.1
